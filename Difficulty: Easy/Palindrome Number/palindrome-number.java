@@ -1,17 +1,22 @@
 class Solution {
-    private int reverse(int x) {
-        int a = 0;
-        while(x!=0){
-            int ld = x % 10;
-            a = a * 10 + ld;
-            x = x / 10;
+    public boolean isPalindrome(int n) {
+
+        n = Math.abs(n);
+
+        String s = String.valueOf(n);
+
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < right) {
+
+            if (s.charAt(left) != s.charAt(right))
+                return false;
+
+            left++;
+            right--;
         }
-        return a;
-    }
-    public boolean isPalindrome(int x) {
-        // code here
-        
-        return x == reverse(x);
-        
+
+        return true;
     }
 }
