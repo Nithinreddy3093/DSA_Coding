@@ -1,31 +1,25 @@
 class Solution {
+
     public int gcd(int n, int arr[]) {
 
-        int min = arr[0];
+        int ans = arr[0];
 
-        for (int num : arr) {
-            min = Math.min(min, num);
-        }
-
-        int ans = 1;
-
-        for (int i = 1; i <= min; i++) {
-
-            boolean flag = true;
-
-            for (int num : arr) {
-
-                if (num % i != 0) {
-                    flag = false;
-                    break;
-                }
-            }
-
-            if (flag) {
-                ans = i;
-            }
+        for (int i = 1; i < n; i++) {
+            ans = findGcd(ans, arr[i]);
         }
 
         return ans;
+    }
+
+    private int findGcd(int a, int b) {
+
+        while (b != 0) {
+
+            int temp = a % b;
+            a = b;
+            b = temp;
+        }
+
+        return a;
     }
 }
